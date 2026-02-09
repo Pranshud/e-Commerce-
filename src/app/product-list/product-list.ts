@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Cart } from '../services/cart';
 
 @Component({
   selector: 'app-product-list',
@@ -9,6 +10,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./product-list.scss']
 })
 export class ProductList {
+
+  constructor(private cart: Cart) {}
+
   products = [
     {
       id: 1,
@@ -48,12 +52,12 @@ export class ProductList {
     }
   ];
 
-  addToCart() {
-  alert('Added to Cart!');
-}
+  addToCart(product: any) {
+    this.cart.add(product);
+  }
 
-buyNow(product: any) {
-  alert('Buying: ' + product.title);
-}
-
+  buyNow(product: any) {
+    this.cart.add(product);
+    alert('Buying: ' + product.title);
+  }
 }

@@ -1,62 +1,61 @@
-<header class="topbar" role="banner">
+<header class="topbar">
   <div class="brand">
-    <img src="assets/images/avatar.jpg.png" alt="Profile" class="avatar" />
+    <img src="assets/images/avatar.jpg.png" class="avatar" />
     <div>
       <div class="title">Pranshu Dwivedi</div>
-      <div class="subtitle">E-Commerce website</div>
+      <div class="subtitle">E-Commerce Website</div>
     </div>
   </div>
 
   <nav class="nav">
-    <a class="nav-link" [class.active]="activeTab === 'home'" (click)="selectTab('home')">Home</a>
-    <a class="nav-link" [class.active]="activeTab === 'catalog'" (click)="selectTab('catalog')">Catalog</a>
-    <a class="nav-link" [class.active]="activeTab === 'projects'" (click)="selectTab('projects')">Products</a>
-    <a class="nav-link" [class.active]="activeTab === 'contact'" (click)="selectTab('contact')">Contact</a>
+    <a (click)="selectTab('home')">Home</a>
+    <a (click)="selectTab('catalog')">Catalog</a>
+    <a (click)="selectTab('projects')">Products</a>
+    <a (click)="selectTab('contact')">Contact</a>
   </nav>
 
-  <div class="actions">
-    <div class="search">
-      <input placeholder="Search..." />
-    </div>
-    <button class="cart">
-      Cart <span class="dot">{{ cartCount }}</span>
-    </button>
-  </div>
+  <button class="cart" routerLink="/cart">
+    Cart <span class="dot">{{ cartCount }}</span>
+  </button>
 </header>
 
-<section class="content-card">
-  <ng-container [ngSwitch]="activeTab">
-    <div *ngSwitchCase="'home'">
-      <h3>Welcome 👋</h3>
-      <p>This is your personal developer dashboard.</p>
-    </div>
+<!-- ✅ MODAL -->
+<div class="modal-backdrop" *ngIf="showModal">
+  <div class="modal">
 
-    <div *ngSwitchCase="'catalog'">
-      <h3>Catalog</h3>
+    <button class="close" (click)="closeModal()">×</button>
+
+    <!-- CATALOG -->
+    <div *ngIf="activeTab === 'catalog'">
+      <h3>Categories</h3>
       <ul>
-        <li *ngFor="let item of catalog">{{ item }}</li>
+        <li *ngFor="let c of catalog">
+          {{ c.name }} ({{ c.count }})
+        </li>
       </ul>
     </div>
 
-    <div *ngSwitchCase="'projects'">
-      <h3>Products</h3>
-      <ul>
-        <li *ngFor="let p of projects">
-  <strong>{{ p.name }}</strong>
+    <!-- PRODUCTS -->
+    <div *ngIf="activeTab === 'projects'">
+      <h3>Your Cart</h3>
 
-  <div class="product-actions">
-    <button class="btn-buy" (click)="buyNow(p)">Buy Now</button>
-    <button class="btn-cart" (click)="addToCart()">Add to Cart</button>
-  </div>
-</li>
-
+      <ul *ngIf="cartItems.length; else empty">
+        <li *ngFor="let p of cartItems">
+          {{ p.title }} — ₹{{ p.price }}
+        </li>
       </ul>
+
+      <ng-template #empty>
+        <p>No products in cart</p>
+      </ng-template>
     </div>
 
-    <div *ngSwitchCase="'contact'">
+    <!-- CONTACT -->
+    <div *ngIf="activeTab === 'contact'">
       <h3>Contact</h3>
       <p>Email: pranshu@example.com</p>
-      <p>Address: Delhi IT Park</p>
+      <p>Delhi IT Park</p>
     </div>
-  </ng-container>
-</section>
+
+  </div>
+</div>

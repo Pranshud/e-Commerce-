@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<section class="cart-wrapper">
+  <h2 class="page-title">Your Cart</h2>
+
+  <!-- FILTER BAR -->
+  <div class="cart-filters">
+    <select [(ngModel)]="selectedSize">
+      <option value="">All Sizes</option>
+      <option *ngFor="let s of allSizes" [value]="s">{{ s }}</option>
+    </select>
+
+    <select [(ngModel)]="priceSort">
+      <option value="">Sort by Price</option>
+      <option value="low">Low → High</option>
+      <option value="high">High → Low</option>
+    </select>
+  </div>
+
+  <!-- CART LIST -->
+  <div *ngIf="filteredItems.length; else empty" class="cart-list">
+    <div class="cart-item" *ngFor="let p of filteredItems">
+      <img [src]="p.img" [alt]="p.title" />
+
+      <div class="info">
+        <h4>{{ p.title }}</h4>
+        <p class="price">₹{{ p.price }}</p>
+        <p class="size">Size: {{ p.size.join(', ') }}</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #empty>
+    <p class="empty">Your cart is empty.</p>
+  </ng-template>
+</section>
+
+<app-footer></app-footer>

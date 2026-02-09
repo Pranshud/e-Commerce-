@@ -10,8 +10,17 @@ import { BannerSlider } from '../banner-slider/banner-slider';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, Header, Sidebar, ProductList, Promo,FooterComponent,BannerSlider],
+  imports: [
+    CommonModule,
+    Header,
+    Sidebar,
+    ProductList,
+    Promo,
+    FooterComponent,
+    BannerSlider
+  ],
   templateUrl: './home.html',
   styleUrls: ['./home.scss']
 })
 export class Home {}
+
