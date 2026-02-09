@@ -1,0 +1,79 @@
+<aside class="sidebar" aria-label="Sidebar">
+  <div class="heading">
+    <span class="badge">Filters</span>
+    <h2>Shop By</h2>
+  </div>
+
+  <ul class="filters">
+
+    <!-- Gender -->
+    <li class="filter-item" (click)="toggle('gender')">
+      <span>Gender</span>
+      <span class="caret" [class.open]="open.gender">▾</span>
+    </li>
+    <div class="filter-body" *ngIf="open.gender">
+      <label><input type="checkbox" /> Men</label>
+      <label><input type="checkbox" /> Women</label>
+    </div>
+
+    <!-- Brands -->
+    <li class="filter-item" (click)="toggle('brands')">
+      <span>Brands</span>
+      <span class="caret" [class.open]="open.brands">▾</span>
+    </li>
+    <div class="filter-body" *ngIf="open.brands">
+      <label><input type="checkbox" /> Nike</label>
+      <label><input type="checkbox" /> Adidas</label>
+      <label><input type="checkbox" /> Puma</label>
+    </div>
+
+    <!-- Style -->
+    <li class="filter-item" (click)="toggle('style')">
+      <span>Style</span>
+      <span class="caret" [class.open]="open.style">▾</span>
+    </li>
+    <div class="filter-body" *ngIf="open.style">
+      <label><input type="checkbox" /> Casual</label>
+      <label><input type="checkbox" /> Formal</label>
+    </div>
+
+    <!-- Price -->
+    <li class="filter-item" (click)="toggle('price')">
+      <span>Price</span>
+      <span class="caret" [class.open]="open.price">▾</span>
+    </li>
+    <div class="filter-body" *ngIf="open.price">
+      <label><input type="radio" name="price" /> ₹0 – ₹999</label>
+      <label><input type="radio" name="price" /> ₹1000 – ₹2999</label>
+      <label><input type="radio" name="price" /> ₹3000+</label>
+    </div>
+
+    <!-- Season -->
+    <li class="filter-item" (click)="toggle('season')">
+      <span>Season</span>
+      <span class="caret" [class.open]="open.season">▾</span>
+    </li>
+    <div class="filter-body" *ngIf="open.season">
+      <label><input type="checkbox" /> Summer</label>
+      <label><input type="checkbox" /> Winter</label>
+      <label><input type="checkbox" /> Rainy</label>
+    </div>
+
+    <!-- Sale -->
+    <li class="filter-item" (click)="toggle('sale')">
+      <span>Sale</span>
+      <span class="caret" [class.open]="open.sale">▾</span>
+    </li>
+    <div class="filter-body" *ngIf="open.sale">
+      <label><input type="checkbox" /> 10% Off</label>
+      <label><input type="checkbox" /> 30% Off</label>
+      <label><input type="checkbox" /> 50% Off</label>
+    </div>
+
+  </ul>
+
+  <div class="sidebar-cta">
+    <button class="btn-primary">Apply Filters</button>
+    <button class="btn-ghost" (click)="reset()">Reset</button>
+  </div>
+</aside>

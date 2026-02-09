@@ -1,0 +1,80 @@
+.footer {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 60px 40px 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.brand h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.brand p {
+  font-size: 14px;
+  color: #9ca3af;
+  line-height: 1.6;
+}
+
+.links h4,
+.newsletter h4 {
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+.links a {
+  display: block;
+  color: #cbd5f5;
+  text-decoration: none;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.links a:hover {
+  color: #ffffff;
+}
+
+.newsletter p {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+.input-wrap {
+  display: flex;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.input-wrap input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+.input-wrap button {
+  background: #22c55e;
+  border: none;
+  padding: 0 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #9ca3af;
+  border-top: 1px solid #1e293b;
+  padding-top: 20px;
+}

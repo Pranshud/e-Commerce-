@@ -1,0 +1,46 @@
+.promo-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), #fff);
+    padding: 18px;
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(2, 6, 23, 0.08);
+    text-align: center;
+}
+
+.promo-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    height: 160px;
+    object-fit: cover;
+}
+
+.sale {
+    position: relative;
+    left: auto;
+    top: auto;
+    background: #ff7a59;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-weight: 800;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.promo-price {
+    margin: 12px 0;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.promo-btn {
+    background: linear-gradient(90deg, var(--accent-2), var(--accent-1));
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}

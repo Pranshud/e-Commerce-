@@ -1,0 +1,62 @@
+<header class="topbar" role="banner">
+  <div class="brand">
+    <img src="assets/images/avatar.jpg.png" alt="Profile" class="avatar" />
+    <div>
+      <div class="title">Pranshu Dwivedi</div>
+      <div class="subtitle">E-Commerce website</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a class="nav-link" [class.active]="activeTab === 'home'" (click)="selectTab('home')">Home</a>
+    <a class="nav-link" [class.active]="activeTab === 'catalog'" (click)="selectTab('catalog')">Catalog</a>
+    <a class="nav-link" [class.active]="activeTab === 'projects'" (click)="selectTab('projects')">Products</a>
+    <a class="nav-link" [class.active]="activeTab === 'contact'" (click)="selectTab('contact')">Contact</a>
+  </nav>
+
+  <div class="actions">
+    <div class="search">
+      <input placeholder="Search..." />
+    </div>
+    <button class="cart">
+      Cart <span class="dot">{{ cartCount }}</span>
+    </button>
+  </div>
+</header>
+
+<section class="content-card">
+  <ng-container [ngSwitch]="activeTab">
+    <div *ngSwitchCase="'home'">
+      <h3>Welcome 👋</h3>
+      <p>This is your personal developer dashboard.</p>
+    </div>
+
+    <div *ngSwitchCase="'catalog'">
+      <h3>Catalog</h3>
+      <ul>
+        <li *ngFor="let item of catalog">{{ item }}</li>
+      </ul>
+    </div>
+
+    <div *ngSwitchCase="'projects'">
+      <h3>Products</h3>
+      <ul>
+        <li *ngFor="let p of projects">
+  <strong>{{ p.name }}</strong>
+
+  <div class="product-actions">
+    <button class="btn-buy" (click)="buyNow(p)">Buy Now</button>
+    <button class="btn-cart" (click)="addToCart()">Add to Cart</button>
+  </div>
+</li>
+
+      </ul>
+    </div>
+
+    <div *ngSwitchCase="'contact'">
+      <h3>Contact</h3>
+      <p>Email: pranshu@example.com</p>
+      <p>Address: Delhi IT Park</p>
+    </div>
+  </ng-container>
+</section>

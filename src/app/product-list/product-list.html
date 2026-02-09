@@ -1,0 +1,38 @@
+<section class="products-hero">
+    <div class="hero-left">
+        <h1>The Second Hand Store</h1>
+        <p class="lead">
+            Curated pre-loved garments with story and style — sustainably sourced.
+        </p>
+    </div>
+
+    <div class="grid">
+        <article *ngFor="let p of products" class="card" role="article" [attr.aria-labelledby]="'p-' + p.id">
+            <div class="img-wrap">
+                <img [src]="p.img" [alt]="p.title" loading="lazy" />
+                <div class="badge" *ngIf="p.badge">{{ p.badge }}</div>
+            </div>
+
+            <div class="meta">
+                <h3 [id]="'p-' + p.id">{{ p.title }}</h3>
+
+                <div class="price">
+                    <del *ngIf="p.old">\${{ p.old }}</del>
+                    <strong>\${{ p.price }}</strong>
+                </div>
+
+                <div class="row">
+                    <div class="sizes">
+                        <span *ngFor="let s of p.size" class="size">{{ s }}</span>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-buy" (click)="buyNow(p)">Buy Now</button>
+                        <button class="btn-cart" (click)="addToCart()">Add to Cart</button>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</section>
