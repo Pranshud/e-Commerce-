@@ -1,0 +1,60 @@
+<div class="auth-wrapper">
+  <div class="auth-card">
+
+    <h2 class="title">Welcome Back</h2>
+    <p class="subtitle">Login to continue</p>
+
+    <!-- EMAIL LOGIN -->
+    <div class="section">
+      <input
+        type="email"
+        placeholder="Email"
+        [(ngModel)]="email"
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        [(ngModel)]="password"
+      />
+
+      <button class="primary-btn" (click)="loginEmail()">
+        Login
+      </button>
+
+      <a class="link" routerLink="/auth/forgot-password">
+        Forgot Password?
+      </a>
+    </div>
+
+    <div class="divider">OR</div>
+
+    <!-- OTP LOGIN -->
+    <div class="section">
+      <input
+        type="text"
+        placeholder="Mobile Number"
+        [(ngModel)]="mobile"
+      />
+
+      <button class="secondary-btn" (click)="sendOtp()">
+        Login with OTP
+      </button>
+    </div>
+
+    <div class="divider">OR</div>
+
+    <!-- SOCIAL LOGIN -->
+    <div class="social">
+      <button class="google" (click)="social('google')">Google</button>
+      <button class="facebook" (click)="social('facebook')">Facebook</button>
+      <button class="apple" (click)="social('apple')">Apple</button>
+    </div>
+
+    <p class="footer-text">
+      New here?
+      <a routerLink="/auth/signup">Create Account</a>
+    </p>
+
+  </div>
+</div>

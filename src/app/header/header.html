@@ -1,4 +1,6 @@
 <header class="topbar">
+
+  <!-- BRAND -->
   <div class="brand">
     <img src="assets/images/avatar.jpg.png" class="avatar" />
     <div>
@@ -7,6 +9,7 @@
     </div>
   </div>
 
+  <!-- NAV -->
   <nav class="nav">
     <a (click)="selectTab('home')">Home</a>
     <a (click)="selectTab('catalog')">Catalog</a>
@@ -14,18 +17,42 @@
     <a (click)="selectTab('contact')">Contact</a>
   </nav>
 
-  <button class="cart" routerLink="/cart">
-    Cart <span class="dot">{{ cartCount }}</span>
-  </button>
+  <!-- RIGHT -->
+  <div class="right">
+
+    <!-- LANGUAGE -->
+    <div class="lang-wrapper" (click)="toggleLang()">
+      🌐 English
+      <div class="lang-menu" *ngIf="showLang">
+        <div class="lang-item">Español</div>
+        <div class="lang-item">Deutsch</div>
+        <div class="lang-item">Nederlands</div>
+        <div class="lang-item">العربية</div>
+        <div class="lang-item">ภาษาไทย</div>
+        <div class="lang-item">Français (Canada)</div>
+        <div class="lang-item">🇧🇷 Português (Brasil)</div>
+        <div class="lang-item">🇫🇷 Français</div>
+        <div class="lang-item">🇯🇵 日本語</div>
+        <div class="lang-item">🇮🇩 Bahasa Indonesia</div>
+        <div class="lang-item">🇻🇳 Tiếng Việt</div>
+      </div>
+    </div>
+
+    <a class="signin" (click)="openLogin()">Sign In</a>
+
+    <button class="cart" routerLink="/cart">
+      Cart <span class="dot">{{ cartCount }}</span>
+    </button>
+
+  </div>
 </header>
 
-<!-- ✅ MODAL -->
+<!-- 🔹 EXISTING MODAL (CATALOG / CART / CONTACT) -->
 <div class="modal-backdrop" *ngIf="showModal">
   <div class="modal">
 
     <button class="close" (click)="closeModal()">×</button>
 
-    <!-- CATALOG -->
     <div *ngIf="activeTab === 'catalog'">
       <h3>Categories</h3>
       <ul>
@@ -35,7 +62,6 @@
       </ul>
     </div>
 
-    <!-- PRODUCTS -->
     <div *ngIf="activeTab === 'projects'">
       <h3>Your Cart</h3>
 
@@ -50,12 +76,44 @@
       </ng-template>
     </div>
 
-    <!-- CONTACT -->
     <div *ngIf="activeTab === 'contact'">
       <h3>Contact</h3>
       <p>Email: pranshu@example.com</p>
       <p>Delhi IT Park</p>
     </div>
+
+  </div>
+</div>
+
+<!-- 🔹 LOGIN MODAL -->
+<div class="modal-backdrop" *ngIf="showLogin">
+  <div class="modal">
+
+    <button class="close" (click)="closeLogin()">×</button>
+
+    <h3>Sign In</h3>
+
+    <form (ngSubmit)="login()">
+      <input
+        type="email"
+        placeholder="Email"
+        name="email"
+        [(ngModel)]="loginData.email"
+        required
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        [(ngModel)]="loginData.password"
+        required
+      />
+
+      <button class="primary" type="submit">
+        Login
+      </button>
+    </form>
 
   </div>
 </div>

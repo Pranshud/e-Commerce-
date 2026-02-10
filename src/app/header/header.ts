@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { Cart } from '../services/cart';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './header.html',
   styleUrls: ['./header.scss']
 })
@@ -25,6 +26,14 @@ export class Header implements OnInit {
     { name: 'Accessories', count: 60 },
     { name: 'Sale', count: 30 }
   ];
+
+  showLang = false;
+  showLogin = false;
+
+  loginData = {
+    email: '',
+    password: ''
+  };
 
   constructor(private cart: Cart, private router: Router) {}
 
@@ -45,10 +54,38 @@ export class Header implements OnInit {
 
     this.activeTab = tab;
     this.showModal = true;
+    this.showLogin = false;
   }
 
   closeModal() {
     this.showModal = false;
     this.activeTab = null;
   }
+
+
+  toggleLang() {
+    this.showLang = !this.showLang;
+  }
+
+  openLogin() {
+    this.showLogin = true;
+    this.showModal = false;
+  }
+
+  closeLogin() {
+    this.showLogin = false;
+  }
+
+  login() {
+    localStorage.setItem('loggedIn', 'true');
+    this.closeLogin();
+   this.router.navigate(['/cart']);
+
+  }
+  openCartPopup() {
+  this.activeTab = 'projects';
+  this.showModal = true;
+  this.showLogin = false;
+}
+
 }
