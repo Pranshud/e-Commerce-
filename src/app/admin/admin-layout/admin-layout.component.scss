@@ -1,0 +1,45 @@
+.admin-wrapper {
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+.admin-nav {
+  background: #1f2937;
+  color: #fff;
+  padding: 14px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+
+  li {
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+  }
+
+  li:hover {
+    background: #374151;
+  }
+
+  .active {
+    background: #2563eb;
+  }
+}
+
+.admin-content {
+  padding: 30px;
+}

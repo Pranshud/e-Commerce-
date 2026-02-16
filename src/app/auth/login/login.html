@@ -5,50 +5,60 @@
     <p class="subtitle">Login to continue</p>
 
     <!-- EMAIL LOGIN -->
-    <div class="section">
+    <form class="section" (ngSubmit)="loginEmail()">
+
       <input
         type="email"
+        name="email"
         placeholder="Email"
         [(ngModel)]="email"
+        required
       />
 
       <input
         type="password"
+        name="password"
         placeholder="Password"
         [(ngModel)]="password"
+        required
       />
 
-      <button class="primary-btn" (click)="loginEmail()">
+      <button class="primary-btn" type="submit">
         Login
       </button>
 
       <a class="link" routerLink="/auth/forgot-password">
         Forgot Password?
       </a>
-    </div>
+
+    </form>
 
     <div class="divider">OR</div>
 
     <!-- OTP LOGIN -->
-    <div class="section">
+    <form class="section" (ngSubmit)="sendOtp()">
+
       <input
         type="text"
+        name="mobile"
         placeholder="Mobile Number"
         [(ngModel)]="mobile"
+        required
       />
 
-      <button class="secondary-btn" (click)="sendOtp()">
+      <button class="secondary-btn" type="submit">
         Login with OTP
       </button>
-    </div>
+
+    </form>
 
     <div class="divider">OR</div>
 
     <!-- SOCIAL LOGIN -->
     <div class="social">
-      <button class="google" (click)="social('google')">Google</button>
-      <button class="facebook" (click)="social('facebook')">Facebook</button>
-      <button class="apple" (click)="social('apple')">Apple</button>
+      <button class="google" type="button" (click)="social('google')">Google</button>
+      <button class="facebook" type="button" (click)="social('facebook')">Facebook</button>
+      <button class="apple" type="button" (click)="social('apple')">Apple</button>
     </div>
 
     <p class="footer-text">

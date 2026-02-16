@@ -1,9 +1,57 @@
-<h2>Verify OTP</h2>
+<div class="otp-overlay">
+  <div class="otp-card">
 
-<input
-  placeholder="Enter OTP"
-  name="otp"
-  [(ngModel)]="otp"
-/>
+    <form (ngSubmit)="verifyOtp()">
 
-<button (click)="verify()">Verify</button>
+      <!-- Header -->
+      <div class="otp-header">
+        <div class="logo">🔐</div>
+        <h2>Verify OTP</h2>
+        <p class="subtitle">Enter the 4-digit OTP sent to your mobile</p>
+      </div>
+
+      <!-- OTP Inputs -->
+      <div class="otp-inputs">
+        <input #otpInput maxlength="4"
+          [(ngModel)]="otp1" name="otp1"
+          (input)="onOtpInput($event, 1)"
+          (keydown)="onBackspace($event, 1)" />
+
+        <input #otpInput maxlength="1"
+          [(ngModel)]="otp2" name="otp2"
+          (input)="onOtpInput($event, 2)"
+          (keydown)="onBackspace($event, 2)" />
+
+        <input #otpInput maxlength="1"
+          [(ngModel)]="otp3" name="otp3"
+          (input)="onOtpInput($event, 3)"
+          (keydown)="onBackspace($event, 3)" />
+
+        <input #otpInput maxlength="1"
+          [(ngModel)]="otp4" name="otp4"
+          (input)="onOtpInput($event, 4)"
+          (keydown)="onBackspace($event, 4)" />
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        class="submit-btn"
+        [disabled]="(otp1 + otp2 + otp3 + otp4).length !== 4">
+        Submit
+      </button>
+
+    </form>
+
+    <!-- Footer -->
+    <div class="otp-footer">
+      <p>Wait for OTP, do not refresh or close</p>
+      <p class="resend">
+        Didn’t get OTP?
+        <span class="link">Resend</span>
+        <span class="timer">01:56</span>
+      </p>
+    </div>
+
+  </div>
+</div>

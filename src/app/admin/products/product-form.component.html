@@ -1,0 +1,58 @@
+<h2>{{ isEdit ? 'Edit Product' : 'Add Product' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+
+  <!-- Product Name -->
+  <div>
+    <label>Product Name *</label>
+    <input type="text" formControlName="name" />
+    <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+      Name is required
+    </div>
+  </div>
+
+  <!-- Price -->
+  <div>
+    <label>Price *</label>
+    <input type="number" formControlName="price" />
+    <div *ngIf="form.get('price')?.touched && form.get('price')?.invalid">
+      Valid price is required
+    </div>
+  </div>
+
+  <!-- Category -->
+  <div>
+    <label>Category *</label>
+    <input type="number" formControlName="categoryId" placeholder="Category ID" />
+    <div *ngIf="form.get('categoryId')?.touched && form.get('categoryId')?.invalid">
+      Category is required
+    </div>
+  </div>
+
+  <!-- Stock -->
+  <div>
+    <label>Stock *</label>
+    <input type="number" formControlName="stock" />
+    <div *ngIf="form.get('stock')?.touched && form.get('stock')?.invalid">
+      Stock is required
+    </div>
+  </div>
+
+  <!-- Description -->
+  <div>
+    <label>Description</label>
+    <textarea rows="3" formControlName="description"></textarea>
+  </div>
+
+  <!-- Actions -->
+  <div style="margin-top: 12px;">
+    <button type="submit">
+      {{ isEdit ? 'Update' : 'Save' }}
+    </button>
+
+    <button type="button" (click)="cancel()">
+      Cancel
+    </button>
+  </div>
+
+</form>

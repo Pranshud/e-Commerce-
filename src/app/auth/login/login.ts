@@ -24,16 +24,36 @@ export class Login {
     private router: Router
   ) {}
 
-  loginEmail() {
-    const success = this.auth.login(this.email, this.password);
-    if (success) this.router.navigate(['/home']);
+loginEmail() {
+
+  if (!this.email || !this.password) {
+    alert('Email and Password required');
+    return;
   }
 
-  sendOtp() {
-    this.auth.sendOtp(this.mobile);
-    this.router.navigate(['/otp']);
+  const role = this.auth.login(this.email, this.password);
+
+  if (!role) {
+    alert('Invalid credentials');
+    return;
   }
 
+  if (role === 'ADMIN') {
+    this.router.navigate(['/admin']);
+  } else {
+    this.router.navigate(['/home']);
+  }
+}
+sendOtp() {
+  if (!this.mobile) {
+    alert('Please enter Mobile Number');
+    return;
+  }
+
+  this.auth.sendOtp(this.mobile);
+  this.auth.verifyOtp('dummy'); // learning phase
+  this.router.navigate(['/home']);
+}
   social(provider: 'google' | 'facebook' | 'apple') {
     this.auth.socialLogin(provider);
     this.router.navigate(['/home']);

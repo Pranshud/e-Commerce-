@@ -1,0 +1,20 @@
+<div class="admin-wrapper">
+
+  <!-- TOP NAV -->
+  <nav class="admin-nav">
+    <div class="logo">Admin Panel</div>
+
+    <ul class="menu">
+      <li routerLink="/admin/products" routerLinkActive="active">Products</li>
+      <li routerLink="/admin/categories" routerLinkActive="active">Categories</li>
+      <li routerLink="/admin/inventory" routerLinkActive="active">Inventory</li>
+      <li routerLink="/admin/bulk-upload" routerLinkActive="active">Bulk Upload</li>
+    </ul>
+  </nav>
+
+  <!-- PAGE CONTENT -->
+  <div class="admin-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
